@@ -1,7 +1,9 @@
 <h1>{{ titulo }}</h1>
 <ul>
     <li *ngFor="let tarefa of listaTarefas">
-        {{ tarefa.id }}. {{ tarefa.titulo }} 
-        | <button>CONCLUIR</button> | <button>REMOVER</button>
+        {{ tarefa.id }}. {{ tarefa.titulo }} | 
+        <button *ngIf="!tarefa.concluido">CONCLUIR</button> | 
+        <button *ngIf="tarefa.concluido">REFAZER</button> | 
+        <button>REMOVER</button>
     </li>
 </ul>
