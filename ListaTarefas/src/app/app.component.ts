@@ -20,6 +20,8 @@ export class AppComponent {
         Validators.required
       ])]
     });
+
+    this.carregar();
   }
 
   adicionar() {
@@ -35,6 +37,7 @@ export class AppComponent {
     if (index !== -1) {
       this.listaTarefas.splice(index, 1);
     }
+    this.salvar();
   }
 
   limpar() {
@@ -43,14 +46,21 @@ export class AppComponent {
 
   marcarComoConcluido(tarefa: Tarefa) {
     tarefa.concluido = true;
+    this.salvar();
   }
 
   marcarComoNaoConcluido(tarefa: Tarefa) {
     tarefa.concluido = false;
+    this.salvar();
   }
 
   salvar() {
     const dados = JSON.stringify(this.listaTarefas);
     localStorage.setItem('listaTarefas', dados);
+  }
+
+  carregar() {
+    const dados = localStorage.getItem('listaTarefas') || '()';
+    this.listaTarefas = JSON.parse(dados);
   }
 }
