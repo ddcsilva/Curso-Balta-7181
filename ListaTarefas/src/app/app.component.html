@@ -7,3 +7,11 @@
         <button (click)="excluirTarefa(tarefa)">REMOVER</button>
     </li>
 </ul>
+
+<form [formGroup]="form">
+    <fieldset>
+        <label>Tarefa: </label>
+        <input type="text" placeholder="Título da Tarefa" maxlength="60" formControlName="titulo">
+        <button>Salvar</button>
+    </fieldset>
+</form>
