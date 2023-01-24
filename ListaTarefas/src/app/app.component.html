@@ -13,6 +13,6 @@
         <label>Tarefa: </label>
         <input type="text" placeholder="Título da Tarefa" maxlength="60" formControlName="titulo">
         <small *ngIf="form.controls['titulo'].invalid && !form.controls['titulo'].pristine">Este campo deve conter entre 3 e 60 caracteres</small>
-        <button>Salvar</button>
+        <button [disabled]="form.invalid">Salvar</button>
     </fieldset>
 </form>
