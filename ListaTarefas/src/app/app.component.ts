@@ -58,6 +58,7 @@ export class AppComponent {
   salvar() {
     const dados = JSON.stringify(this.listaTarefas);
     localStorage.setItem('listaTarefas', dados);
+    this.modoVisualizacao = "lista";
   }
 
   carregar() {
