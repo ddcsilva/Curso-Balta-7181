@@ -1,10 +1,11 @@
 <h1>{{ titulo }}</h1>
 <ul>
+    <p *ngIf="listaTarefas.length == 0"><small>Não tem nenhuma tarefa hoje!</small></p>
     <li *ngFor="let tarefa of listaTarefas">
         {{ tarefa.id }}. {{ tarefa.titulo }} | 
         <button *ngIf="!tarefa.concluido" (click)="marcarComoConcluido(tarefa)">CONCLUIR</button> | 
         <button *ngIf="tarefa.concluido" (click)="marcarComoNaoConcluido(tarefa)">REFAZER</button> | 
-        <button (click)="excluirTarefa(tarefa)">REMOVER</button>
+        <button (click)="excluir(tarefa)">REMOVER</button>
     </li>
 </ul>
 
@@ -13,6 +14,6 @@
         <label>Tarefa: </label>
         <input type="text" placeholder="Título da Tarefa" maxlength="60" formControlName="titulo">
         <small *ngIf="form.controls['titulo'].invalid && !form.controls['titulo'].pristine">Este campo deve conter entre 3 e 60 caracteres</small>
-        <button [disabled]="form.invalid">Salvar</button>
+        <button [disabled]="form.invalid" (click)="adicionar()">Salvar</button>
     </fieldset>
 </form>
