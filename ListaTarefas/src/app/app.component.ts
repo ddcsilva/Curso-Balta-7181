@@ -15,4 +15,19 @@ export class AppComponent {
     this.listaTarefas.push(new Tarefa(2, 'Ir ao supermercado', false));
     this.listaTarefas.push(new Tarefa(3, 'Cortar o cabelo', true));
   }
+
+  excluirTarefa(tarefa: Tarefa) {
+    const index = this.listaTarefas.indexOf(tarefa);
+    if (index !== -1) {
+      this.listaTarefas.splice(index, 1);
+    }
+  }
+
+  marcarComoConcluido() {
+
+  }
+
+  marcarComoNaoConcluido() {
+
+  }
 }
