@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public modoVisualizacao = 'lista';
   public listaTarefas: Tarefa[] = [];
   public titulo: String = "Minhas tarefas";
   public form: FormGroup = new FormGroup('');
@@ -62,5 +63,9 @@ export class AppComponent {
   carregar() {
     const dados = localStorage.getItem('listaTarefas') || '[]';
     this.listaTarefas = JSON.parse(dados);
+  }
+
+  alterarModoVisualizacao(modoVisualizacao: string) {
+    this.modoVisualizacao = modoVisualizacao;
   }
 }
