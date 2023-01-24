@@ -23,11 +23,11 @@ export class AppComponent {
     }
   }
 
-  marcarComoConcluido() {
-
+  marcarComoConcluido(tarefa: Tarefa) {
+    tarefa.concluido = true;
   }
 
-  marcarComoNaoConcluido() {
-
+  marcarComoNaoConcluido(tarefa: Tarefa) {
+    tarefa.concluido = false;
   }
 }
