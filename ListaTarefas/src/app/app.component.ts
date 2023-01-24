@@ -26,6 +26,7 @@ export class AppComponent {
     const id = this.listaTarefas.length + 1;
     const titulo = this.form.controls['titulo'].value;
     this.listaTarefas.push(new Tarefa(id, titulo, false));
+    this.salvar();
     this.limpar();
   }
 
@@ -46,5 +47,10 @@ export class AppComponent {
 
   marcarComoNaoConcluido(tarefa: Tarefa) {
     tarefa.concluido = false;
+  }
+
+  salvar() {
+    const dados = JSON.stringify(this.listaTarefas);
+    localStorage.setItem('listaTarefas', dados);
   }
 }
