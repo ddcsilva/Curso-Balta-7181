@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Tarefa } from 'src/models/tarefa.model';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public listaTarefas: any[] = [];
+  public listaTarefas: Tarefa[] = [];
   public titulo: String = "Minhas tarefas";
 
   constructor() {
-    this.listaTarefas.push('Passear com o cachorro');
-    this.listaTarefas.push('Ir ao supermercado');
-    this.listaTarefas.push('Cortar o cabelo');
+    this.listaTarefas.push(new Tarefa(1, 'Passear com o cachorro', false));
+    this.listaTarefas.push(new Tarefa(2, 'Ir ao supermercado', false));
+    this.listaTarefas.push(new Tarefa(3, 'Cortar o cabelo', true));
   }
 }

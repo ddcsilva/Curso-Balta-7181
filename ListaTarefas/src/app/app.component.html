@@ -1,4 +1,7 @@
 <h1>{{ titulo }}</h1>
 <ul>
-    <li *ngFor="let tarefa of listaTarefas">{{ tarefa }}</li>
+    <li *ngFor="let tarefa of listaTarefas">
+        {{ tarefa.id }}. {{ tarefa.titulo }} 
+        | <button>CONCLUIR</button> | <button>REMOVER</button>
+    </li>
 </ul>
