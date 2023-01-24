@@ -60,7 +60,7 @@ export class AppComponent {
   }
 
   carregar() {
-    const dados = localStorage.getItem('listaTarefas') || '()';
+    const dados = localStorage.getItem('listaTarefas') || '[]';
     this.listaTarefas = JSON.parse(dados);
   }
 }
