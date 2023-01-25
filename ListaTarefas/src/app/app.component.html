@@ -2,30 +2,31 @@
 <ul class="animated flipinX" *ngIf="modoVisualizacao == 'lista'">
     <p *ngIf="listaTarefas.length == 0"><small>Não tem nenhuma tarefa hoje!</small></p>
     <li *ngFor="let tarefa of listaTarefas">
-        {{ tarefa.id }}. {{ tarefa.titulo }} |
-        <button *ngIf="!tarefa.concluido" (click)="marcarComoConcluido(tarefa)">CONCLUIR</button> |
-        <button *ngIf="tarefa.concluido" (click)="marcarComoNaoConcluido(tarefa)">REFAZER</button> |
-        <button (click)="excluir(tarefa)">REMOVER</button>
+        {{ tarefa.titulo }}
+        <button (click)="excluir(tarefa)"><i class="far fa-trash-alt"></i></button>
+        <button *ngIf="!tarefa.concluido" (click)="marcarComoConcluido(tarefa)"><i class="far fa-check-circle"></i></button>
+        <button *ngIf="tarefa.concluido" (click)="marcarComoNaoConcluido(tarefa)"><i class="fas fa-check-circle"></i></button>
     </li>
 </ul>
 
 <div id="modal" *ngIf="modoVisualizacao == 'entrada'" class="animated flipinX">
+    <h1 class="text-center">Nova Tarefa</h1>
     <form [formGroup]="form">
-        <fieldset>
-            <label>Tarefa: </label>
-            <input type="text" placeholder="Título da Tarefa" maxlength="60" formControlName="titulo">
-            <small *ngIf="form.controls['titulo'].invalid && !form.controls['titulo'].pristine">Este campo deve conter
-                entre 3 e 60 caracteres</small>
-            <button class="button" [disabled]="form.invalid" (click)="adicionar()">Salvar</button>
-        </fieldset>
+        <input type="text" placeholder="Título da Tarefa" maxlength="60" formControlName="titulo"><br>
+        <small class="danger" *ngIf="form.controls['titulo'].invalid && !form.controls['titulo'].pristine">
+            Este campo deve conter entre 3 e 60 caracteres <br>
+        </small>
+        <p class="text-center">
+            <button [disabled]="form.invalid" (click)="adicionar()" class="button"><i class="far fa-save"></i> Salvar</button>
+        </p>
     </form>
 </div>
 
-<button class="add-button animated fadeInUp button" (click)="alterarModoVisualizacao('entrada')" *ngIf="modoVisualizacao=='list'">
+<button class="add-button animated fadeInUp button" (click)="alterarModoVisualizacao('entrada')" *ngIf="modoVisualizacao=='lista'">
     <i class="fas fa-plus-circle"></i>
     NOVA TAREFA
-  </button>
-  <button class="add-button animated fadeInUp button" (click)="alterarModoVisualizacao('lista')" *ngIf="modoVisualizacao=='add'">
+</button>
+<button class="add-button animated fadeInUp button" (click)="alterarModoVisualizacao('lista')" *ngIf="modoVisualizacao=='entrada'">
     <i class="fas fa-times"></i>
     CANCELAR
-  </button>
+</button>
